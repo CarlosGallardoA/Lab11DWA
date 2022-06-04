@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
+import styledComponents from "styled-components";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -18,8 +19,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { Outlet } from "react-router-dom";
-
+import * as ROUTES from "../../router/routes";
+import { Link, Outlet } from "react-router-dom";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -93,9 +94,11 @@ export default function AdminDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Persistent drawer
-          </Typography>
+          <LinkCustom to={ROUTES.HOME}>
+            <Typography variant="h6" noWrap component="div">
+              Home
+            </Typography>
+          </LinkCustom>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -154,3 +157,7 @@ export default function AdminDrawer() {
     </Box>
   );
 }
+const LinkCustom = styledComponents(Link)`
+    text-decoration: none;
+    color: inherit;
+`;

@@ -2,7 +2,11 @@ import { useParams } from "react-router-dom";
 
 const About = () => {
   const { id } = useParams();
-  return <div>About con id : {id}</div>;
+  return (
+    <>
+      <h1>Usuario con DNI : {id}</h1>
+    </>
+  );
 };
 
 export default About;
